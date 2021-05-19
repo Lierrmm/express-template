@@ -10,11 +10,10 @@ const port = process.env.port || 3000; //process.env.port will be set by your cl
 
 app.use(helmet());
 app.set('views', path.join(__dirname, 'views'));
-app.engine('html', require('ejs').renderFile);
-app.set('view engine', 'html');
+app.engine('html', require('ejs').renderFile); //remove if using ejs templating
+app.set('view engine', 'html'); //set to ejs if using ejs templating
 app.use(express.json());
 app.use(express.static("views"));
-
 
 
 /* API routing */

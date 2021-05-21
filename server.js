@@ -8,7 +8,11 @@ const authenticatedRoute = express.Router();
 const port = process.env.port || 3000; //process.env.port will be set by your cloud hoster of choice. fallback to 3000 for localhost.
 
 
-app.use(helmet());
+app.use(
+    helmet({
+      contentSecurityPolicy: false
+    })
+); //Change to app.use(helmet()); if you want CSP back.
 app.set('views', path.join(__dirname, 'views'));
 app.engine('html', require('ejs').renderFile); //remove if using ejs templating
 app.set('view engine', 'html'); //set to ejs if using ejs templating
